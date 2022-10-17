@@ -26,9 +26,17 @@ from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
+
+    # Set world file path
+    world_path = PathJoinSubstitution(
+        [FindPackageShare("bob_gazebo"), "worlds", "district.world"]
+    )
+
+    # Command for launching gazebo
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
+                    launch_arguments={'world' : world_path}.items()
              )
 
     rviz_config_file = PathJoinSubstitution(
