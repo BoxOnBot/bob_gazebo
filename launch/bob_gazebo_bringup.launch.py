@@ -29,7 +29,7 @@ def generate_launch_description():
 
     # Set world file path
     world_path = PathJoinSubstitution(
-        [FindPackageShare("bob_gazebo"), "worlds", "district.world"]
+        [FindPackageShare("bob_gazebo"), "worlds", "empty.world"]
     )
 
     # Command for launching gazebo
